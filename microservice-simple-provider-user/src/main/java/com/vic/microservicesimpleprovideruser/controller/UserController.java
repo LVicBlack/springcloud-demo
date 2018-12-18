@@ -15,7 +15,6 @@ public class UserController {
 
     @GetMapping("/{id}")
     public User findById(@PathVariable Long id) {
-        User findOne = userRepository.findById(id).orElse(null);
-        return findOne;
+        return userRepository.findById(id).orElse(null);
     }
 }
