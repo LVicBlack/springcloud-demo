@@ -40,4 +40,6 @@ eureka:
       defaultZone: http://user:pwd123@peer1:8761/eureka/,http://user:pwd123@peer2:8762/eureka/
   instance:
     prefer-ip-address: true
+    metadata-map:
+      my-metadata: metadata元数据测试
 #表示将自己的IP注册到Eureka Server.false,则表示注册微服务所在操作系统的hostname注册到Eureka Server
