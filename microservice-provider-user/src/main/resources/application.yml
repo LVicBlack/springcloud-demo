@@ -1,6 +1,13 @@
+spring:
+  profiles: peer1
 server:
   port: 8011
-
+---
+spring:
+  profiles: peer2
+server:
+  port: 8021
+---
 spring:
   application:
     name: microservice-provider-user
@@ -24,8 +31,8 @@ logging:
 
 #actuator
 management:
-  server:
-    port: 8000 #actuator端口
+#  server:
+#    port: 8000 #actuator端口
   endpoints:
     web:
       exposure:
