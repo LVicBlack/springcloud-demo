@@ -1,6 +1,7 @@
 package com.vic.microserviceconsumermovie.controller;
 
 import com.vic.microserviceconsumermovie.domain.entity.User;
+import com.vic.microserviceconsumermovie.feign.UserFeignClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +26,19 @@ public class MovieController {
     @Autowired
     private DiscoveryClient discoveryClient;
 
+    @Autowired
+    private UserFeignClient userFeignClient;
+
     private static final Logger LOGGER = LoggerFactory.getLogger(MovieController.class);
 
     @GetMapping(value = "/user/{id}", produces = "application/json")
     public User findById(@PathVariable Long id) {
         return restTemplate.getForObject("http://localhost:8011/" + id, User.class);
+    }
+
+    @GetMapping(value = "/feign/user/{id}", produces = "application/json")
+    public User feignFindById(@PathVariable Long id) {
+        return userFeignClient.findById(id);
     }
 
     /**
