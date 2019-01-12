@@ -31,11 +31,13 @@ public class MovieController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MovieController.class);
 
+    // 使用restTemplate进行请求
     @GetMapping(value = "/user/{id}", produces = "application/json")
     public User findById(@PathVariable Long id) {
         return restTemplate.getForObject("http://localhost:8011/" + id, User.class);
     }
 
+    // 使用Feign进行请求
     @GetMapping(value = "/feign/user/{id}", produces = "application/json")
     public User feignFindById(@PathVariable Long id) {
         return userFeignClient.findById(id);
