@@ -1,0 +1,52 @@
+spring:
+  profiles: peer1
+server:
+  port: 8030
+---
+spring:
+  profiles: peer2
+server:
+  port: 8031
+---
+spring:
+  application:
+    name: microservice-provider-user
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:
+    platform: org.hibernate.dialect.MySQL5Dialect
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC
+    username: root
+    password: root12345
+
+logging:
+  level:
+    root: INFO
+    org.hibernate: INFO
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+
+#actuator
+management:
+#  server:
+#    port: 8000 #actuator端口
+  endpoints:
+    web:
+      exposure:
+        include: "*" #开放所有页面节点  默认只开启了health、info两个节点
+  endpoint:
+    health:
+      show-details: when_authorized #显示健康具体信息  默认不会显示详细信息
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:pwd123@peer1:8761/eureka/,http://user:pwd123@peer2:8762/eureka/
+  instance:
+    prefer-ip-address: true
+    metadata-map:
+      my-metadata: metadata元数据测试
+#表示将自己的IP注册到Eureka Server.false,则表示注册微服务所在操作系统的hostname注册到Eureka Server
