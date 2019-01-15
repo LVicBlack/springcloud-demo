@@ -10,7 +10,7 @@ server:
 ---
 spring:
   application:
-    name: microservice-provider-user
+    name: microservice-provider-user-with-auth
   jpa:
     generate-ddl: false
     show-sql: true

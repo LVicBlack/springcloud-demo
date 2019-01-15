@@ -1,4 +1,4 @@
-package com.vic.microserviceprovideruser.domain.entity;
+package com.vic.microserviceprovideruserwithauth.domain.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

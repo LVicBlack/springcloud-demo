@@ -1,7 +1,7 @@
-package com.vic.microserviceprovideruser.controller;
+package com.vic.microserviceprovideruserwithauth.controller;
 
-import com.vic.microserviceprovideruser.dao.UserRepository;
-import com.vic.microserviceprovideruser.domain.entity.User;
+import com.vic.microserviceprovideruserwithauth.dao.UserRepository;
+import com.vic.microserviceprovideruserwithauth.domain.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

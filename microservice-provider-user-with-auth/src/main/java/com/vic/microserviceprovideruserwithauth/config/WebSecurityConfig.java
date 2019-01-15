@@ -55,9 +55,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         @Override
         public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
             if ("user".equals(username)) {
-                return new SecurityUser("user", "password1", "user-role");
+                return new SecurityUser("user", "user123", "user-role");
             } else if ("admin".equals(username)) {
-                return new SecurityUser("admin", "password2", "admin-role");
+                return new SecurityUser("admin", "admin123", "admin-role");
             } else {
                 return null;
             }

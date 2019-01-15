@@ -1,4 +1,4 @@
-package com.vic.microserviceprovideruser;
+package com.vic.microserviceprovideruserwithauth;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
