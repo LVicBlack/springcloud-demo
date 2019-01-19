@@ -1,11 +1,19 @@
 package com.vic.microserviceconsumermoviefeignmanual.feign;
 
+import com.vic.microserviceconsumermoviefeignmanual.config.FeignConfiguration;
 import com.vic.microserviceconsumermoviefeignmanual.domain.entity.User;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import feign.Param;
+import feign.RequestLine;
+import org.springframework.cloud.openfeign.FeignClient;
 
+@FeignClient(name = "microservice-provider-user-with-auth",configuration = FeignConfiguration.class)
 public interface UserFeignClient {
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public User findById(@PathVariable("id") Long id);
+    /**
+     * 使用feign自带的注解@RequestLine
+     * @see https://github.com/OpenFeign/feign
+     * @param id 用户id
+     * @return 用户信息
+     */
+    @RequestLine("GET /{id}")
+    public User findById(@Param("id") Long id);
 }
