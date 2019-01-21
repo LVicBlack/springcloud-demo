@@ -16,3 +16,7 @@ spring:
 microservice-provider-user:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+logging:
+  level:
+    com.vic.microserviceconsumermoviefeignmanual.feign.UserFeignClient: debug
