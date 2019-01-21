@@ -16,7 +16,7 @@ public class MovieController {
 
     // 使用Feign进行请求
     @GetMapping(value = "/feign/user/{id}", produces = "application/json")
-    public User feignFindById(@PathVariable Long id) {
+    public User feignFindById(@PathVariable(name = "id") Long id) {
         System.out.println(id);
         return userFeignClient.findById(id);
     }

@@ -21,9 +21,4 @@ public class FeignConfiguration {
         return new Contract.Default();
     }
 
-
-//    @Bean
-//    public BasicAuthRequestInterceptor basicAuthRequestInterceptor(){
-//        return new BasicAuthRequestInterceptor("user","pwd123");
-//    }
 }
