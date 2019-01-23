@@ -16,12 +16,12 @@ public class UserController {
         return userRepository.findById(id).orElse(null);
     }
 
-    @GetMapping("/get")
+    @GetMapping(value = "/get", produces = "application/json")
     public User get(User user) {
         return user;
     }
 
-    @PostMapping("/post")
+    @PostMapping(value = "/post", produces = "application/json")
     public User post(@RequestBody User user) {
         return user;
     }
