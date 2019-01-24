@@ -1,0 +1,18 @@
+server:
+  port: 8042
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:pwd123@peer1:8761/eureka/,http://user:pwd123@peer2:8762/eureka/
+  instance:
+    prefer-ip-address: true
+
+spring:
+  application:
+    name: microservice-consumer-movie-ribbon-hystrix
+
+#Ribbon 配置
+microservice-provider-user:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
