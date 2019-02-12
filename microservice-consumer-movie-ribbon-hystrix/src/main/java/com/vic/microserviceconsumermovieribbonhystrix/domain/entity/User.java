@@ -13,6 +13,10 @@ public class User {
     public User() {
     }
 
+    public User(Long id) {
+        this.id = id;
+    }
+
     public User(Long id, String username, String name, Integer age, BigDecimal balance) {
         this.id = id;
         this.username = username;

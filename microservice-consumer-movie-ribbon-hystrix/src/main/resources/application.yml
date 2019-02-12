@@ -22,3 +22,10 @@ management:
   endpoint:
     health:
       show-details: always
+
+#断路器跳闸的最小请求数量
+hystrix:
+  command:
+    default:
+      circuitBreaker:
+        requestVolumeThreshold: 1
