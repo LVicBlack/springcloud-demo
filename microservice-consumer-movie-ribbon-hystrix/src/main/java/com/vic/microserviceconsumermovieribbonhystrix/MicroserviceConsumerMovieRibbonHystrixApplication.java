@@ -12,7 +12,6 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableFeignClients
 @EnableCircuitBreaker
-@EnableHystrix
 public class MicroserviceConsumerMovieRibbonHystrixApplication {
 
 	@Bean

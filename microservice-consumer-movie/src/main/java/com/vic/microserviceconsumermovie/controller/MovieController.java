@@ -39,6 +39,11 @@ public class MovieController {
     public User findById(@PathVariable Long id) {
         return restTemplate.getForObject("http://microservice-provider-user/" + id, User.class);
     }
+    // 使用restTemplate进行请求
+    @GetMapping(value = "/test/user/{id}", produces = "application/json")
+    public User findByIds(@PathVariable Long id) {
+        return restTemplate.getForObject("http://microservice-provider-user/{id}", User.class, id);
+    }
 
     // 使用Feign进行请求
     @GetMapping(value = "/feign/user/{id}", produces = "application/json")
