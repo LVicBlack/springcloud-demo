@@ -20,3 +20,7 @@ microservice-provider-user:
 feign:
   hystrix:
     enabled: true
+
+logging:
+  level:
+    com.vic.microserviceconsumermoviefeignhystrix.feign.UserFeignClient: info

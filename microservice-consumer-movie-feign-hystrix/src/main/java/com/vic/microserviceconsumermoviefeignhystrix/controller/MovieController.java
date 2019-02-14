@@ -11,7 +11,6 @@ import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -37,6 +36,7 @@ public class MovieController {
 
     /**
      * 查询microservice-provider-user服务的信息并返回
+     *
      * @return microservice-provider-user服务的信息
      */
     @GetMapping(value = "/user-instance", produces = "application/json")
@@ -48,7 +48,7 @@ public class MovieController {
     @GetMapping(value = "/log-instance", produces = "application/json")
     public ServiceInstance logUserInstance() {
         ServiceInstance serviceInstance = loadBalancerClient.choose("microservice-provider-user");
-        LOGGER.info("{}:{}:{}", serviceInstance.getServiceId(),serviceInstance.getHost(), serviceInstance.getPort());
+        LOGGER.info("{}:{}:{}", serviceInstance.getServiceId(), serviceInstance.getHost(), serviceInstance.getPort());
         return serviceInstance;
     }
 }
