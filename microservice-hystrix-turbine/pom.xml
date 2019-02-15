@@ -8,8 +8,8 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>microservice-consumer-movie-feign-hystrix</artifactId>
-	<name>microservice-consumer-movie-feign-hystrix</name>
+	<artifactId>microservice-hystrix-turbine</artifactId>
+	<name>microservice-hystrix-turbine</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -43,9 +43,19 @@
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 
-		<dependency>
+        <dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-turbine</artifactId>
 		</dependency>
 	</dependencies>
 

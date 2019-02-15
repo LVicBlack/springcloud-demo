@@ -24,3 +24,11 @@ feign:
 logging:
   level:
     com.vic.microserviceconsumermoviefeignhystrix.feign.UserFeignClient: info
+
+management:
+  endpoint:
+    health:
+      show-details: always
+    web:
+      exposure:
+        include: '*'

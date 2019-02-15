@@ -1,5 +1,5 @@
 server:
-  port: 8042
+  port: 8051
 
 eureka:
   client:
@@ -10,12 +10,7 @@ eureka:
 
 spring:
   application:
-    name: microservice-consumer-movie-ribbon-hystrix
-
-#Ribbon 配置
-microservice-provider-user:
-  ribbon:
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+    name: microservice-hystrix-turbine
 
 #健康检查
 management:
@@ -31,8 +26,9 @@ hystrix:
   command:
     default:
       circuitBreaker:
-        requestVolumeThreshold: 1
+        requestVolumeThreshold: 3
 
-feign:
-  hystrix:
-    enabled: true
+turbine:
+  app-config: microservice-consumer-movie-feign-hystrix,microservice-consumer-movie-ribbon-hystrix
+  cluster-name-expression: "'default'"
+
