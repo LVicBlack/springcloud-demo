@@ -1,5 +1,5 @@
 server:
-  port: 8042
+  port: 8030
 
 eureka:
   client:
@@ -10,7 +10,7 @@ eureka:
 
 spring:
   application:
-    name: microservice-consumer-movie-ribbon-hystrix
+    name: microservice-hystrix-dashborad
 
 #Ribbon 配置
 microservice-provider-user:
