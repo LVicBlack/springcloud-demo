@@ -13,6 +13,9 @@ import java.util.Map;
 
 @FeignClient(name = "microservice-provider-user", configuration = FeignConfiguration.class)
 public interface UserFeignClient {
+
+//    非自定义Feign
+
     // 非自定义情况下 不支持使用@GetMapping
 //    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
 //    public User findById(@PathVariable("id") Long id);
@@ -30,6 +33,8 @@ public interface UserFeignClient {
 //    @RequestMapping(value = "/post", method = RequestMethod.POST)
 //    public User post(@RequestBody User user);
 
+//    -------------------------------
+//    自定义Feign
     /**
      * 使用feign自带的注解@RequestLine
      *
