@@ -1,0 +1,34 @@
+server:
+  port: 8060
+
+spring:
+  application:
+    name: microservice-gateway-zuul
+
+zuul:
+  ignored-services: microservice-provider-user,microservice-consumer-movie # 使用'*'可忽略所有微服务
+  routes:
+    microservice-provider-user: /user/**
+    microservice-consumer-movie-ribbon-hystrix: /consumer-hystrix/**
+    microservice-consumer-movie:
+      path: /consumer/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:pwd123@peer1:8761/eureka/,http://user:pwd123@peer2:8762/eureka/
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    com.netflix: DEBUG
