@@ -1,0 +1,33 @@
+server:
+  port: 8070
+
+spring:
+  application:
+    name: microservice-config-server
+  cloud:
+    config:
+      server:
+        git:
+          # Git仓库地址
+          uri: https://github.com/LVicBlack/springcloud-config-repo.git
+          # Git仓库账号
+          username: LVicBlack
+          # Git仓库密码
+          password:
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:pwd123@peer1:8761/eureka/,http://user:pwd123@peer2:8762/eureka/
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
