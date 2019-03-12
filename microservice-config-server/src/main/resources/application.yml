@@ -13,7 +13,7 @@ spring:
           # Git仓库账号
           username: LVicBlack
           # Git仓库密码
-          password: Only.525
+          password:
 
 eureka:
   client:
