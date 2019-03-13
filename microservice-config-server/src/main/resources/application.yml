@@ -11,7 +11,7 @@ spring:
           # Git仓库地址
           uri: https://github.com/LVicBlack/springcloud-config-repo.git
           # Git仓库账号
-          username: LVicBlack
+          username:
           # Git仓库密码
           password:
 
