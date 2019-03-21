@@ -1,0 +1,20 @@
+server:
+  port: 8072
+
+spring:
+  rabbitmq:
+    host: 106.12.9.21
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
