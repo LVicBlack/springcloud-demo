@@ -11,9 +11,11 @@ spring:
           # Git仓库地址
           uri: https://github.com/LVicBlack/springcloud-config-repo.git
           # Git仓库账号
-          username:
+          username: LVicBlack
           # Git仓库密码
-          password:
+          password: '{cipher}AQA8pGJnKd7ZnbIPE6Quy1E9gu4LWHpkJZA1+0y70RFnjZSR1s0lkdOKH5rIrLuXICh1aaNddgioPnYUU1YGoqFvuPQQfz+kwwrL9MdvAaeP81fBb0TRAbGiUuNLjLnpki8qcs6QLs5Pq3ON0Db7OEssoO9GYmEI8U8/OJ6pi1Xcc1h6+2COKR4vnSYmBb/cDH3sjB+FWhaHB2J1onMkbY82iDXiya3nJ3A9ArRUOlfwwsIQ8WGcHkK7nzOrqgdLE4ODV15kq+BAURDYYi5UwAfC5QrjuMvNlb3zoztuN3A/NA/37gyvNwaybF43MvocOt5z8z4fcWhQSIj90054U7K63DXZDUmaZRo376WUeF9zGzOG2dR7XDvnAK/+oUmgqqE='
+          clone-on-start: true
+
 
 eureka:
   client:
