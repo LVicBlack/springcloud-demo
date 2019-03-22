@@ -51,10 +51,29 @@
 
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
-				<configuration>
-					<encoding>${project.build.sourceEncoding}</encoding>
-					<useDefaultDelimiters>true</useDefaultDelimiters>
-				</configuration>
+                <executions>
+                    <execution>
+                        <id>default-resources</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/classes</outputDirectory>
+                            <useDefaultDelimiters>true</useDefaultDelimiters>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources/</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>src/main/resources.${profileActive}</directory>
+                                    <filtering>false</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
 			</plugin>
 
 			<plugin>
@@ -72,7 +91,7 @@
 		<profile>
 			<id>peer1</id>
 			<properties>
-				<spring.profiles.active>peer1</spring.profiles.active>
+				<profileActive>peer1</profileActive>
 			</properties>
 			<activation>
 				<activeByDefault>true</activeByDefault>
@@ -82,7 +101,7 @@
 		<profile>
 			<id>peer2</id>
 			<properties>
-				<spring.profiles.active>peer2</spring.profiles.active>
+				<profileActive>peer2</profileActive>
 			</properties>
 		</profile>
 	</profiles>
