@@ -1,0 +1,6 @@
+zookeeper:
+    server: 192.168.8.105:2181
+    sessionTimeoutMs: 6000
+    connectionTimeoutMs: 6000
+    maxRetries: 3
+    baseSleepTimeMs: 1000
