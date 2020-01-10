@@ -2,11 +2,11 @@ server:
   port: 8892
 
 zookeeper:
-    server: 120.76.130.43:2181
-    sessionTimeoutMs: 6000
-    connectionTimeoutMs: 6000
-    maxRetries: 3
-    baseSleepTimeMs: 1000
+  server: 120.76.130.43:2181
+  sessionTimeoutMs: 6000
+  connectionTimeoutMs: 6000
+  maxRetries: 3
+  baseSleepTimeMs: 1000
 
 logging:
   level:

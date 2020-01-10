@@ -1,4 +1,4 @@
-package com.zk.demo.controller;
+package com.zk.demo.tools;
 
 import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.Stat;
@@ -9,11 +9,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class LockSample {
-
-    @Value("${zookeeper.server}")
-    private String zkServer;
-    @Value("${zookeeper.sessionTimeoutMs}")
-    private int sessionTimeoutMs;
 
     private ZooKeeper zkClient;
     private static final String LOCK_ROOT_PATH = "/Locks";
@@ -34,14 +29,11 @@ public class LockSample {
         }
     };
 
-
-    public LockSample() throws IOException {
-        zkClient = new ZooKeeper("120.76.130.43:2182", 6000, new Watcher() {
-            @Override
-            public void process(WatchedEvent event) {
-                if (event.getState() == Event.KeeperState.Disconnected) {
-                    System.out.println("失去连接");
-                }
+    public LockSample(@Value("${zookeeper.server}") String zkServer,
+                      @Value("${zookeeper.sessionTimeoutMs}") int sessionTimeoutMs) throws IOException {
+        zkClient = new ZooKeeper(zkServer, sessionTimeoutMs, event -> {
+            if (event.getState() == Watcher.Event.KeeperState.Disconnected) {
+                System.out.println("失去连接");
             }
         });
     }

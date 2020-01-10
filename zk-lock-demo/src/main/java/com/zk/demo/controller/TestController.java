@@ -1,13 +1,35 @@
 package com.zk.demo.controller;
 
+import com.zk.demo.tools.TicketSeller;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 
-public class Test {
+@RestController
+public class TestController {
+
+    @Value("${zookeeper.server}")
+    private String zkServer;
+    @Value("${zookeeper.sessionTimeoutMs}")
+    private Integer sessionTimeoutMs;
+
+    @GetMapping("/zk")
+    public String findById() {
+        TicketSeller ticketSeller1 = new TicketSeller(zkServer, sessionTimeoutMs);
+        TicketSeller ticketSeller2 = new TicketSeller(zkServer, sessionTimeoutMs);
+        TicketSeller ticketSeller3 = new TicketSeller(zkServer, sessionTimeoutMs);
+        ticketSeller1.start();
+        ticketSeller2.start();
+        ticketSeller3.start();
+        return "zk";
+    }
+
     public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
         ZooKeeper zk = new ZooKeeper("120.76.130.43:2182", 6000,
                 watchedEvent -> System.out.println("**************已经触发: " + watchedEvent.getType() + "事件"));
