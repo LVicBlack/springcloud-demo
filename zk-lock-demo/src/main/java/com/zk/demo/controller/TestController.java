@@ -1,5 +1,6 @@
 package com.zk.demo.controller;
 
+import com.zk.demo.tools.Mutex;
 import com.zk.demo.tools.TicketSeller;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
@@ -27,6 +28,12 @@ public class TestController {
         ticketSeller1.start();
         ticketSeller2.start();
         ticketSeller3.start();
+        return "zk";
+    }
+
+    @GetMapping("/mutex")
+    public String findById() {
+        Mutex.soldTickWithLock();
         return "zk";
     }
 
