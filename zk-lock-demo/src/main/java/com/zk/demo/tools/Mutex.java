@@ -4,9 +4,21 @@ import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.recipes.locks.InterProcessMutex;
 
 public class Mutex extends Thread{
+    private CuratorFramework client;
+
+    public Mutex(CuratorFramework client){
+        this.client = client;
+    }
+
     @Override
     public void run() {
-        super.run();
+        try {
+            for(int i = 0; i<50;i++){
+                System.out.println("************线程" + Thread.currentThread().getName() + "************ ::::: " + i);
+                Mutex.soldTickWithLock(client);
+            }
+        } catch (Exception ignored) {
+        }
     }
 
     public static void soldTickWithLock(CuratorFramework client) throws Exception {
@@ -16,6 +28,7 @@ public class Mutex extends Thread{
 
         //获得了锁, 进行业务流程
         //代表复杂逻辑执行了一段时间
+        System.out.println("---------do thx---------");
         int sleepMillis = (int) (Math.random() * 2000);
         Thread.sleep(sleepMillis);
 

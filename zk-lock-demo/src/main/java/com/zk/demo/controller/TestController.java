@@ -2,6 +2,8 @@ package com.zk.demo.controller;
 
 import com.zk.demo.tools.Mutex;
 import com.zk.demo.tools.TicketSeller;
+import org.apache.curator.framework.CuratorFramework;
+import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.ZooDefs;
@@ -10,10 +12,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 
 @RestController
 public class TestController {
+
+    @Resource
+    CuratorFramework zkClient;
 
     @Value("${zookeeper.server}")
     private String zkServer;
@@ -32,9 +38,14 @@ public class TestController {
     }
 
     @GetMapping("/mutex")
-    public String findById() {
-        Mutex.soldTickWithLock();
-        return "zk";
+    public String mutex() {
+        Mutex mutex1 = new Mutex(zkClient);
+        Mutex mutex2 = new Mutex(zkClient);
+        Mutex mutex3 = new Mutex(zkClient);
+        mutex1.start();
+        mutex2.start();
+        mutex3.start();
+        return "mutex";
     }
 
     public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
